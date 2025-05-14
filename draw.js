@@ -14,7 +14,7 @@ function draw() {
       break;
 
     case STATE_INSTRUCT
-      drawInstrucions();
+      drawInstruct();
       break;
 		  
     case STATE_PLAY:
