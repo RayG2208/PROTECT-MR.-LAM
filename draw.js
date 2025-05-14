@@ -5,9 +5,9 @@ function draw() {
   background("black");
 
   switch (currentScreen) {
-		case STATE_LOAD:
-			drawLoad(); // Draw the load screen
-			break;
+    case STATE_LOAD:
+      drawLoad(); // Draw the load screen
+      break;
 			
     case STATE_START:
       drawStart();  // Draw the start screen
