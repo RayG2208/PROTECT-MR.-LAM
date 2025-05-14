@@ -1,3 +1,3 @@
-function drawPauseScreen(){
+function drawPause(){
   
 }
