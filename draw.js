@@ -13,6 +13,10 @@ function draw() {
       drawStart();  // Draw the start screen
       break;
 
+    case STATE_INSTRUCT
+      drawInstrucions();
+      break;
+		  
     case STATE_PLAY:
       drawPlay();   // Draw the play screen 
       break;
