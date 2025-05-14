@@ -13,7 +13,7 @@ function draw() {
       drawStart();  // Draw the start screen
       break;
 
-    case STATE_INSTRUCT
+    case STATE_INSTRUCT:
       drawInstruct();
       break;
 		  
