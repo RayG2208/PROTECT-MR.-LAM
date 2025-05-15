@@ -21,6 +21,13 @@ function drawPlay() {
 	fill('black')
 	text("Back", xCenter, yBack)
 
+	// Rectangle obstacle
+	fill("rgb(104,104,238)")
+	
+	ry = ry + dry
+	
+	rect(rx, ry, 300, 50)
+
 	// player controls circle
 	playerCircle()
 }
