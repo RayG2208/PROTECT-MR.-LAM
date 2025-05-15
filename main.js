@@ -1,3 +1,11 @@
+let logo;
+
+function preload(){
+	logo = loadImage('logo.png')
+}
+
+
+
 function setup () {
 	createCanvas(windowWidth, windowHeight);
 }
