@@ -1,0 +1,3 @@
+let windowWidth = 600
+let windowHeight = 1080
+let logoSize = 400
