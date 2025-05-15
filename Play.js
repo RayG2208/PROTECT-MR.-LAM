@@ -22,8 +22,13 @@ function drawPlay() {
 	text("Back", xCenter, yBack)
 
 	// player controls circle
-	fill('white')
-	circle(mouseX, mouseY, 50)
-
-
+	playerCircle()
 }
+
+	function playerCircle() {
+		// player controls circle
+		fill('white')
+		circle(mouseX, mouseY, 50)
+
+
+	}
