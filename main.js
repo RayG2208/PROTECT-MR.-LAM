@@ -1,3 +1,7 @@
+function setup () {
+	createCanvas(windowWidth, windowHeight);
+}
+
 // We can add more screens later (if needed)
 
 function draw() {
