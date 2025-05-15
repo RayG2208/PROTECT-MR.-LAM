@@ -1,11 +1,11 @@
 function drawStart() {
-
-background('rgb(219,219,255)');
+createCanvas(windowWidth, windowHeight);
+background('rgb(162,162,255)');
 
 	// Proportional parameters
 
-	let bW = width * 0.25; // Makes the width of button be 25% of screen width
-	let bH = height * 0.15; // Makes the height of button be 15% of screen height
+	let bW = width * 0.35; // Makes the width of button be 25% of screen width
+	let bH = height * 0.10; // Makes the height of button be 15% of screen height
 	let xCenter = width / 2;
 	
 	
@@ -26,5 +26,9 @@ background('rgb(219,219,255)');
 	textSize(width * 0.02); // Same concept with the buttons
 	text("PLAY", xCenter, yPlay);
 	text("How to play", xCenter, yInstruct);
+	
+	// logo
+	imageMode(CENTER)
+	image(logo, windowWidth/2, windowHeight / 5.75, logoSize, logoSize)
   
 }
