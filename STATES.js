@@ -1,10 +1,10 @@
 //screen states
-const STATE_LOAD = 'load';
-const STATE_START = 'start';
-const STATE_PLAY = 'play';
-const STATE_PAUSE = 'pause';
-const STATE_END = 'end';
-const STATE_INSTRUCT = 'instructions';
+const STATE_LOAD = 0;
+const STATE_START = 1;
+const STATE_PLAY = 2;
+const STATE_PAUSE = 3;
+const STATE_END = 4;
+const STATE_INSTRUCT = 5;
 
 //initial screen state
-let currentScreen = STATE_LOAD;
+let currentScreen = STATE_START;
