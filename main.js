@@ -4,10 +4,42 @@ function preload(){
 	logo = loadImage('logo.png')
 }
 
+// Matter modules (idk how they work but they work)
 
+let Engine = Matter.Engine, 
+		World = Matter.World, 
+		Bodies = Matter.Bodies;
+
+let engine, world;
+let obstacles = [];
+
+// The circle that protects
+let sheild;
+const SHIELD_RADIUS = 25;
 
 function setup () {
 	createCanvas(windowWidth, windowHeight);
+
+	engine = Engine.create(); // This runs everything physics
+	world = engine.world; // Container to hold our objects
+	
+	// Do we want the gravity off so that we can control the fall speed??
+	// Ill add it here and just take it off if we dont really need it
+	world.gravity.y = 0;
+	
+	// Circle that protects
+	shield = Bodies.circle(width / 2, height / 2, SHIELD_RADIUS, {
+		inertia : Infinity, // Physics trauma eeeyyy
+		friction : 0,
+		frictionAir : 0,
+		restitution : 0.9,
+	});
+	shield.isStatic = false; 
+	shield.isSensor = false;
+	shield.collisionFilter.group = -1; // Makes collisions smoother but might also make things laggy cus good graphics always do
+	Matter.Body.setMass(shield, 10); // Make it hit harder cus physics
+	World.add(world, shield);
+	
 }
 
 // We can add more screens later (if needed)
