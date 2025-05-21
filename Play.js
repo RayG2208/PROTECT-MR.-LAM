@@ -33,6 +33,7 @@ function drawPlay() {
 		rotate(obs.angle); // Makes the object rotate when it gets hit (I hope thats what it does)
 		rectMode(CENTER);
 		rect(0, 0, 300, 50);
+		// rect(0, 0, random(50, 300), random(50,100)); // the switching thingy
 		pop();
 
 	}
