@@ -32,7 +32,7 @@ function drawPlay() {
 		translate(obs.position.x, obs.position.y) // Everything is centered in Matter.js. Basically its like rectMode(CENTER) by default. So basically after this the object kind of has its own position that starts at 0 but its not the pixel 0???
 		rotate(obs.angle); // Makes the object rotate when it gets hit (I hope thats what it does)
 		rectMode(CENTER);
-		rect(0, 0, 300, 50);
+		rect(0, 0, width * 0.3, height * 0.05);
 		// rect(0, 0, random(50, 300), random(50,100)); // the switching thingy
 		pop();
 
@@ -87,8 +87,8 @@ function spawnObstacles() {
 
 	let x = random(100, width - 100);
 	let y = -50;
-	let w = 300;
-	let h = 50;
+	let w = width * 0.3;
+	let h = height * 0.05;
 	
 	// Obstacle
 	let obstacle = Bodies.rectangle(x, y, w, h, {
