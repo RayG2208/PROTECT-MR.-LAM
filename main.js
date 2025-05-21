@@ -17,14 +17,34 @@ let obstacles = [];
 let sheild;
 const SHIELD_RADIUS = 25;
 
+// The balloon
+let balloon;
+let balloonAlive = true;
+
 function setup () {
 	createCanvas(windowWidth, windowHeight);
 
 	engine = Engine.create(); // This runs everything physics
+
+	Events.on(engine, "collisionStart", function(event) {
+
+		for (let pair of event.pairs) {
+			let a = pair.bodyA
+			let b = pair.bodyB
+
+			if ((a.label === "balloon" && obstacles.includes(b)) ||
+				(b.label === "balloon" && obstacles.includes(a))) {
+
+				ballooonAlive = false;
+				currentScreen = STATE_END;
+				console.log("Balloon HIT!! Game over!");
+			}
+		}
+	})
+	
 	world = engine.world; // Container to hold our objects
 	
-	// Do we want the gravity off so that we can control the fall speed??
-	// Ill add it here and just take it off if we dont really need it
+	
 	world.gravity.y = 0;
 	
 	// Circle that protects
@@ -39,7 +59,17 @@ function setup () {
 	shield.collisionFilter.group = -1; // Makes collisions smoother but might also make things laggy cus good graphics always do
 	Matter.Body.setMass(shield, 10); // Make it hit harder cus physics
 	World.add(world, shield);
-	
+
+	let BR = width * 0.10;
+
+	balloon = Bodies.circle(width / 2, height * 0.75, BR, {
+		isStatic: true,
+		isSensor: true,
+	})
+
+	balloon.label = "balloon";
+	World.add(world, balloon);
+
 }
 
 // We can add more screens later (if needed)
