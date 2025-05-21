@@ -61,6 +61,18 @@ function mousePressed() {
 		}
 	}
 
+	if (currentScreen === STATE_END) {
 
-
+		let xCenter = width - 100;
+		let bW = width * 0.10;
+		let bH = height * 0.10;
+		let yBack = height * 0.9;
+		
+		if (
+			mouseX > xCenter - bW && mouseX < xCenter + bW &&
+			mouseY > yBack - bH && mouseY < yBack + bH) {
+			currentScreen = STATE_START;
+			//print("Back button clicked")
+		}
+	}
 }
