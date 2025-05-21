@@ -7,8 +7,9 @@ function preload(){
 // Matter modules (idk how they work but they work)
 
 let Engine = Matter.Engine, 
-		World = Matter.World, 
-		Bodies = Matter.Bodies;
+	World = Matter.World, 
+	Bodies = Matter.Bodies,
+	Events = Matter.Events;
 
 let engine, world;
 let obstacles = [];
@@ -22,6 +23,7 @@ let balloon;
 let balloonAlive = true;
 
 function setup () {
+	
 	createCanvas(windowWidth, windowHeight);
 
 	engine = Engine.create(); // This runs everything physics
