@@ -43,14 +43,11 @@ function drawPlay() {
 		spawnObstacles();
 	}
 
-	// Balloons
-	let cxCenter = width / 2;
-	let Br = width * 0.10;
-	let yBalloon = height * 0.75;
-
+	let BR = width * 0.10
+	
 	fill('rgb(242,91,91)')
 	noStroke();
-	circle(cxCenter, yBalloon, Br);
+	circle(balloon.position.x, balloon.position.y, BR);
 
 	// Update the shield position
 	let dx = mouseX - shield.position.x;
