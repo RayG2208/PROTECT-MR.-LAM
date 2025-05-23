@@ -6,9 +6,10 @@ function preload(){
 
 // Matter modules (idk how they work but they work)
 
-let Engine = Matter.Engine, 
-	World = Matter.World, 
+let Engine = Matter.Engine,
+	World = Matter.World,
 	Bodies = Matter.Bodies,
+	Body = Matter.Body,
 	Events = Matter.Events;
 
 let engine, world;
@@ -22,8 +23,8 @@ const SHIELD_RADIUS = 25;
 let balloon;
 let balloonAlive = true;
 
-function setup () {
-	
+function setup() {
+
 	createCanvas(windowWidth, windowHeight);
 
 	engine = Engine.create(); // This runs everything physics
@@ -39,24 +40,44 @@ function setup () {
 
 				ballooonAlive = false;
 				currentScreen = STATE_END;
-				console.log("Balloon HIT!! Game over!");
+				// console.log("Balloon HIT!! Game over!");
 			}
 		}
 	})
 	
+	Events.on(engine, 'collisionStart', (event) => {
+		
+		event.pairs.forEach((pair) => {
+			if((pair.bodyA.label === "boss" || pair.bodyB.label === "boss") &&
+				(pair.bodyA === shield || pair.bodyB === shield)) {
+				
+				bossHealth--;
+				
+				if (bossHealth <= 0) {
+					World.remove(world, boss);
+					bossSpawned = false;
+					level++;
+					wave = 1;
+					enemiesPerWave += 2;
+				}
+			}
+		})
+	})
+
 	world = engine.world; // Container to hold our objects
-	
-	
+
+	// Do we want the gravity off so that we can control the fall speed??
+	// Ill add it here and just take it off if we dont really need it
 	world.gravity.y = 0;
-	
+
 	// Circle that protects
 	shield = Bodies.circle(width / 2, height / 2, SHIELD_RADIUS, {
-		inertia : Infinity, // Physics trauma eeeyyy
-		friction : 0,
-		frictionAir : 0,
-		restitution : 0.9,
+		inertia: Infinity, // Physics trauma eeeyyy
+		friction: 0,
+		frictionAir: 0,
+		restitution: 0.9,
 	});
-	shield.isStatic = false; 
+	shield.isStatic = false;
 	shield.isSensor = false;
 	shield.collisionFilter.group = -1; // Makes collisions smoother but might also make things laggy cus good graphics always do
 	Matter.Body.setMass(shield, 10); // Make it hit harder cus physics
@@ -71,6 +92,7 @@ function setup () {
 
 	balloon.label = "balloon";
 	World.add(world, balloon);
+
 
 }
 
