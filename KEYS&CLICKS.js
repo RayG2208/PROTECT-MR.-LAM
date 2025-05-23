@@ -75,4 +75,21 @@ function mousePressed() {
 			//print("Back button clicked")
 		}
 	}
+
+	let pbCenter = width / 2;
+	let yPower = height - 80;
+	let pbW = width * 0.15;
+	let pbH = height * 0.08;
+	// If power is ready and user clicks or touches withing the button bounds
+	if ( powerReady &&
+		 mouseX > pbCenter - pbW && mouseX < pbCenter + pbW &&
+			mouseY > yPower - pbH && mouseY < yPower + pbH
+		 ) {
+		
+		shieldMode = "powered";
+		powerReady = false;
+		power = 0;
+		powerActivatedAt = millis();
+	}
+	
 }
